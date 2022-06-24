@@ -445,6 +445,17 @@ await alpha.send2ButMes(m.chat, caption, `© ${ownername}`, `absen`, `Absen`, `c
 
 //alpha.sendTextWithMentions(m.chat, caption, m)
 break
+case 'fifit':{
+		if (!mek.key.fromMe && !isOwner && !isCreator) return reply(lang.onlyOwner())
+		            if (args.length < 1) return reply(`Usage :\n${prefix}fitnah [@tag|pesan|balasanbot]]\n\nEx : \n${prefix}fitnah @tagmember|hai|hai juga`)
+		            var gh = args.join('')
+		            mentioned = mek.message.extendedTextMessage.contextInfo.mentionedJid
+		            var replace = gh.split("|")[0];
+		            var target = gh.split("|")[1];
+		            var bot = gh.split("|")[2];
+		            alpha.sendMessage(from, `${bot}`, text, {quoted: { key: { fromMe: false, participant: `${mentioned}`, ...(from ? { remoteJid: from } : {}) }, message: { conversation: `${target}` }}})
+		            }
+			break
 case 'fitnah':
 		if (!mek.key.fromMe && !isOwner && !isCreator) return reply(lang.onlyOwner())
 		            if (args.length < 1) return fakegroup(`Usage :\n${prefix}fitnah [@tag|pesan|balasanbot]]\n\nEx : \n${prefix}fitnah @tagmember|hai|hai juga`)
