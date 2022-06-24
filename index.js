@@ -445,6 +445,30 @@ await alpha.send2ButMes(m.chat, caption, `© ${ownername}`, `absen`, `Absen`, `c
 
 //alpha.sendTextWithMentions(m.chat, caption, m)
 break
+case 'fitnah':
+		if (!mek.key.fromMe && !isOwner && !isCreator) return reply(lang.onlyOwner())
+		            if (args.length < 1) return fakegroup(`Usage :\n${prefix}fitnah [@tag|pesan|balasanbot]]\n\nEx : \n${prefix}fitnah @tagmember|hai|hai juga`)
+		            var gh = args.join('')
+		            mentioned = mek.message.extendedTextMessage.contextInfo.mentionedJid
+		            var replace = gh.split("|")[0];
+		            var target = gh.split("|")[1];
+		            var bot = gh.split("|")[2];
+		            alpha.sendMessage(from, `${bot}`, text, {quoted: { key: { fromMe: false, participant: `${mentioned}`, ...(from ? { remoteJid: from } : {}) }, message: { conversation: `${target}` }}})
+		            break
+		    case 'settarget':
+		if (!mek.key.fromMe && !isOwner && !isCreator) return reply(lang.onlyOwner())
+		            if(!q) return fakegroup(`${prefix}settarget 628xxxxx`)
+		            targetpc = args[0]
+		            fakegroup(`Succes Mengganti target fitnahpc : ${targetpc}`)
+		            break
+		    case 'fitnahpc':
+                            if (args.length < 1) return reply(`Usage :\n${prefix}fake [nomor|pesan|balasanbot]]\n\nEx : \n${prefix}fake 0|hai|hai juga`)
+                            var gh = body.slice(10)
+                            var parti = gh.split("|")[0];
+                            var targetq = gh.split("|")[1];
+		            var bot = gh.split("|")[2];
+			    alpha.sendMessage(from, `${bot}`, text, {quoted: { key: { fromMe: false, participant: `${parti}@s.whatsapp.net`, ...(from ? { remoteJid: from } : {}) }, message: { conversation: `${targetq}` }}})
+				break
 case 'cekabsen':{
 	if (m.isGroup) { 
   if (!(isGroupAdmins || isCreator))return reply(lang.adminOnly())
